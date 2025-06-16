@@ -1,0 +1,300 @@
+[gd_scene load_steps=30 format=3 uid="uid://dednfomdna5al"]
+
+[ext_resource type="Texture2D" uid="uid://dl11j48t0xidw" path="res://data/ui/tv.png" id="1_aftjp"]
+[ext_resource type="AudioStream" uid="uid://c6bewsfxy020c" path="res://data/jirou/normal.wav" id="1_ov62v"]
+[ext_resource type="Texture2D" uid="uid://bg0jfjnk1ydye" path="res://data/ui/bg.png" id="2_f6f3a"]
+[ext_resource type="Texture2D" uid="uid://cew103v7ly8l" path="res://data/ui/tv-extended.png" id="3_2dk6g"]
+[ext_resource type="Texture2D" uid="uid://b02crnfdxecac" path="res://data/ui/tv-extended-bottom.png" id="4_y5y5v"]
+[ext_resource type="Texture2D" uid="uid://pe0mjh2iin5e" path="res://data/ui/chibis/ash.png" id="5_l52j2"]
+[ext_resource type="Texture2D" uid="uid://rwxv2bnxj8ct" path="res://data/ui/chibis/dew.png" id="6_rtr1s"]
+[ext_resource type="Texture2D" uid="uid://cl3yte2556lav" path="res://data/ui/chibis/jirou.png" id="7_2ujxh"]
+[ext_resource type="Texture2D" uid="uid://bt3rryr44rcki" path="res://data/ui/chibis/milk.png" id="8_y2x31"]
+[ext_resource type="Texture2D" uid="uid://bsam554wfh76" path="res://data/ui/chibis/skip.png" id="9_fme0i"]
+[ext_resource type="FontFile" uid="uid://dkstlojou414g" path="res://data/rockb-aseprite14.ttf" id="10_n5xem"]
+[ext_resource type="FontVariation" uid="uid://pgfeihyqudvk" path="res://ButtonROCKB.tres" id="11_4yyja"]
+[ext_resource type="Script" path="res://data/scripts/SongVariants.gd" id="11_oe5gv"]
+[ext_resource type="Texture2D" uid="uid://dsif1kytqylpt" path="res://data/ui/buttonBaseSelected.png" id="12_20jku"]
+[ext_resource type="Script" path="res://data/scripts/MusicPlayButton.gd" id="12_vqfv2"]
+[ext_resource type="Texture2D" uid="uid://bqimdsuslnshc" path="res://data/ui/buttonBaseUnselected.png" id="13_c1icw"]
+[ext_resource type="Script" path="res://data/scripts/MusicCharacterSelectButton.gd" id="14_eq73n"]
+[ext_resource type="Texture2D" uid="uid://cgetg2y7idihe" path="res://data/ui/buttonBaseActive.png" id="14_ulk8k"]
+[ext_resource type="Script" path="res://data/scripts/TransitionButton.gd" id="15_nq6pk"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_geql7"]
+texture = ExtResource("12_20jku")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j8fm4"]
+texture = ExtResource("13_c1icw")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1736b"]
+texture = ExtResource("14_ulk8k")
+
+[sub_resource type="Theme" id="Theme_yrxg2"]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 26
+Button/fonts/font = ExtResource("11_4yyja")
+Button/icons/icon = null
+Button/styles/hover = SubResource("StyleBoxTexture_geql7")
+Button/styles/normal = SubResource("StyleBoxTexture_j8fm4")
+Button/styles/pressed = SubResource("StyleBoxTexture_1736b")
+
+[sub_resource type="InputEventKey" id="InputEventKey_qex42"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_104q3"]
+events = [SubResource("InputEventKey_qex42")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ptu2i"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_sm3pr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ac4f0"]
+font = ExtResource("10_n5xem")
+font_size = 60
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a4dby"]
+font = ExtResource("10_n5xem")
+font_size = 36
+font_color = Color(0, 0, 0, 1)
+
+[node name="Music" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_ov62v")
+
+[node name="Sprites" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -225.0
+offset_right = 400.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Tv" type="Sprite2D" parent="Sprites"]
+position = Vector2(402, 224)
+texture = ExtResource("1_aftjp")
+
+[node name="Sprite" type="Sprite2D" parent="Sprites"]
+texture_filter = 1
+position = Vector2(400, 225)
+scale = Vector2(1, 1.5)
+texture = ExtResource("2_f6f3a")
+
+[node name="Tv-extended" type="Sprite2D" parent="Sprites"]
+position = Vector2(-1454, 226)
+texture = ExtResource("3_2dk6g")
+
+[node name="Tv-extended2" type="Sprite2D" parent="Sprites"]
+position = Vector2(2232, 224)
+texture = ExtResource("3_2dk6g")
+
+[node name="Tv-extended3" type="Sprite2D" parent="Sprites"]
+position = Vector2(-1454, -740)
+texture = ExtResource("3_2dk6g")
+
+[node name="Tv-extended4" type="Sprite2D" parent="Sprites"]
+position = Vector2(2232, -740)
+texture = ExtResource("3_2dk6g")
+
+[node name="Tv-extended5" type="Sprite2D" parent="Sprites"]
+position = Vector2(402, -740)
+texture = ExtResource("3_2dk6g")
+
+[node name="Tv-extended6" type="Sprite2D" parent="Sprites"]
+position = Vector2(-1454, 1193)
+texture = ExtResource("3_2dk6g")
+
+[node name="Tv-extended7" type="Sprite2D" parent="Sprites"]
+position = Vector2(2232, 1191)
+texture = ExtResource("3_2dk6g")
+
+[node name="Tv-extended-bottom" type="Sprite2D" parent="Sprites"]
+position = Vector2(389.5, 1189)
+scale = Vector2(0.983854, 1)
+texture = ExtResource("4_y5y5v")
+
+[node name="Inputs" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -322.0
+offset_top = -58.0
+offset_right = 323.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SongVariants" type="OptionButton" parent="Inputs"]
+layout_mode = 0
+offset_left = 316.0
+offset_top = 151.0
+offset_right = 478.0
+offset_bottom = 186.0
+theme_override_fonts/font = ExtResource("10_n5xem")
+theme_override_font_sizes/font_size = 18
+selected = 0
+item_count = 1
+popup/item_0/text = "Normal"
+script = ExtResource("11_oe5gv")
+
+[node name="BackButton" type="Button" parent="Inputs"]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 0
+offset_left = 584.0
+offset_top = 222.0
+offset_right = 713.0
+offset_bottom = 280.0
+focus_mode = 0
+theme = SubResource("Theme_yrxg2")
+theme_override_font_sizes/font_size = 18
+shortcut = SubResource("Shortcut_104q3")
+text = "Back"
+autowrap_mode = 2
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("15_nq6pk")
+scene = "Bonus"
+
+[node name="PlayButton" type="Button" parent="Inputs" node_paths=PackedStringArray("audio_player", "music_player")]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 0
+offset_left = 246.0
+offset_top = 195.0
+offset_right = 415.0
+offset_bottom = 271.0
+focus_mode = 0
+theme = SubResource("Theme_yrxg2")
+theme_override_font_sizes/font_size = 25
+text = "Play"
+autowrap_mode = 2
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("12_vqfv2")
+audio_player = NodePath("../../AudioStreamPlayer")
+music_player = NodePath("../../MusicPlayer")
+
+[node name="JirouButton" type="Button" parent="Inputs"]
+layout_mode = 0
+offset_right = 126.0
+offset_bottom = 126.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ptu2i")
+toggle_mode = true
+button_pressed = true
+button_group = SubResource("ButtonGroup_sm3pr")
+icon = ExtResource("7_2ujxh")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("14_eq73n")
+
+[node name="AshButton" type="Button" parent="Inputs"]
+layout_mode = 0
+offset_left = 390.0
+offset_right = 516.0
+offset_bottom = 126.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ptu2i")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_sm3pr")
+icon = ExtResource("5_l52j2")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("14_eq73n")
+character = "ash"
+options = Array[String](["Normal", "Extended", "Sad", "Casual"])
+
+[node name="DewButton" type="Button" parent="Inputs"]
+layout_mode = 0
+offset_left = 520.0
+offset_right = 646.0
+offset_bottom = 126.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ptu2i")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_sm3pr")
+icon = ExtResource("6_rtr1s")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("14_eq73n")
+character = "dew"
+
+[node name="MilkButton" type="Button" parent="Inputs"]
+layout_mode = 0
+offset_left = 260.0
+offset_right = 386.0
+offset_bottom = 126.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ptu2i")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_sm3pr")
+icon = ExtResource("8_y2x31")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("14_eq73n")
+character = "milk"
+options = Array[String](["Normal", "Sad", "Piano"])
+
+[node name="SkipButton" type="Button" parent="Inputs"]
+layout_mode = 0
+offset_left = 130.0
+offset_right = 256.0
+offset_bottom = 126.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ptu2i")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_sm3pr")
+icon = ExtResource("9_fme0i")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("14_eq73n")
+character = "skip"
+options = Array[String](["Normal", "Sad"])
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 800.0
+offset_bottom = 72.0
+text = "Music"
+label_settings = SubResource("LabelSettings_ac4f0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FrogboyLabel" type="Label" parent="."]
+layout_mode = 0
+offset_top = 112.0
+offset_right = 800.0
+offset_bottom = 162.0
+text = "Select a Frogboy"
+label_settings = SubResource("LabelSettings_a4dby")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VariantLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 296.0
+offset_right = 378.0
+offset_bottom = 368.0
+text = "Variant:"
+label_settings = SubResource("LabelSettings_a4dby")
+horizontal_alignment = 1
+vertical_alignment = 1

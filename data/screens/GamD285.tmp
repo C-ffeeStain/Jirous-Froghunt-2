@@ -1,0 +1,171 @@
+[gd_scene load_steps=11 format=3 uid="uid://cgeav2ppu7wk6"]
+
+[ext_resource type="Texture2D" uid="uid://nnhsssjyxhy6" path="res://data/images/bgs/jirou.png" id="1_oky1w"]
+[ext_resource type="Script" path="res://data/scripts/Character.gd" id="2_pxp0g"]
+[ext_resource type="Texture2D" uid="uid://ce2ock28wgrat" path="res://data/images/players/dew.png" id="3_en6rx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pnrqv"]
+size = Vector2(973, 41)
+
+[sub_resource type="Animation" id="Animation_fi8w4"]
+resource_name = "Run"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5g04o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_x8ftf"]
+resource_name = "Jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(0, 1), Vector2i(0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_df5tr"]
+resource_name = "Duck"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(0, 1), Vector2i(0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_txlgl"]
+_data = {
+"Duck": SubResource("Animation_df5tr"),
+"Jump": SubResource("Animation_x8ftf"),
+"RESET": SubResource("Animation_5g04o"),
+"Run": SubResource("Animation_fi8w4")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nrp34"]
+size = Vector2(82, 167.669)
+
+[node name="Game" type="Node2D"]
+
+[node name="Background1" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(400, 225)
+scale = Vector2(2.778, 2.778)
+texture = ExtResource("1_oky1w")
+
+[node name="Background2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1200, 225)
+scale = Vector2(2.778, 2.778)
+texture = ExtResource("1_oky1w")
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(0, 451)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(486.5, -39.5)
+shape = SubResource("RectangleShape2D_pnrqv")
+
+[node name="PlayerCharacter" type="CharacterBody2D" parent="."]
+position = Vector2(65, 322)
+script = ExtResource("2_pxp0g")
+
+[node name="Sprite" type="Sprite2D" parent="PlayerCharacter"]
+texture_filter = 1
+position = Vector2(24.25, -12.75)
+scale = Vector2(1.57906, 1.57906)
+texture = ExtResource("3_en6rx")
+hframes = 8
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerCharacter/Sprite"]
+libraries = {
+"": SubResource("AnimationLibrary_txlgl")
+}
+
+[node name="Hitbox" type="CollisionShape2D" parent="PlayerCharacter"]
+position = Vector2(28.25, -17.5847)
+shape = SubResource("RectangleShape2D_nrp34")

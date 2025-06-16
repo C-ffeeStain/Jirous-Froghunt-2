@@ -1,0 +1,195 @@
+[gd_scene load_steps=23 format=3 uid="uid://djo5r3vt25k1b"]
+
+[ext_resource type="Texture2D" uid="uid://bg0jfjnk1ydye" path="res://data/ui/bg.png" id="1_iliot"]
+[ext_resource type="FontFile" uid="uid://dkstlojou414g" path="res://data/rockb-aseprite14.ttf" id="2_xaofj"]
+[ext_resource type="FontVariation" uid="uid://pgfeihyqudvk" path="res://ButtonROCKB.tres" id="3_mdkij"]
+[ext_resource type="Script" path="res://data/scripts/FrogToast.gd" id="3_uudmo"]
+[ext_resource type="Texture2D" uid="uid://dsif1kytqylpt" path="res://data/ui/buttonBaseSelected.png" id="4_utghx"]
+[ext_resource type="Texture2D" uid="uid://bqimdsuslnshc" path="res://data/ui/buttonBaseUnselected.png" id="5_fjkex"]
+[ext_resource type="Texture2D" uid="uid://cgetg2y7idihe" path="res://data/ui/buttonBaseActive.png" id="6_uq75g"]
+[ext_resource type="Script" path="res://data/scripts/TransitionButton.gd" id="7_psnh3"]
+[ext_resource type="Texture2D" uid="uid://dl11j48t0xidw" path="res://data/ui/tv.png" id="9_gee0x"]
+[ext_resource type="Texture2D" uid="uid://cew103v7ly8l" path="res://data/ui/tv-extended.png" id="10_k7pwx"]
+[ext_resource type="Texture2D" uid="uid://b02crnfdxecac" path="res://data/ui/tv-extended-bottom.png" id="11_bje1k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_eyupb"]
+font = ExtResource("2_xaofj")
+font_size = 36
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jxwfw"]
+font = ExtResource("2_xaofj")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ve8dj"]
+texture = ExtResource("4_utghx")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q22oa"]
+texture = ExtResource("5_fjkex")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lrcxy"]
+texture = ExtResource("6_uq75g")
+
+[sub_resource type="Theme" id="Theme_ys36v"]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 26
+Button/fonts/font = ExtResource("3_mdkij")
+Button/icons/icon = null
+Button/styles/hover = SubResource("StyleBoxTexture_ve8dj")
+Button/styles/normal = SubResource("StyleBoxTexture_q22oa")
+Button/styles/pressed = SubResource("StyleBoxTexture_lrcxy")
+
+[sub_resource type="InputEventKey" id="InputEventKey_qex42"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_qkckt"]
+events = [SubResource("InputEventKey_qex42")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_ftbi3"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="InputEventKey" id="InputEventKey_1swdn"]
+keycode = 4194310
+
+[sub_resource type="Shortcut" id="Shortcut_v8kpy"]
+events = [SubResource("InputEventKey_ftbi3"), SubResource("InputEventKey_1swdn")]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Bg" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(400, 225)
+scale = Vector2(1, 1.49003)
+texture = ExtResource("1_iliot")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -69.5
+offset_top = 28.0
+offset_right = 69.5
+offset_bottom = 74.0
+grow_horizontal = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_eyupb")
+
+[node name="FrogToast" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -400.0
+offset_top = 184.0
+offset_right = 400.0
+offset_bottom = 216.0
+grow_horizontal = 2
+text = "You collected 0 frogs!"
+label_settings = SubResource("LabelSettings_jxwfw")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_uudmo")
+
+[node name="MainMenuButton" type="Button" parent="."]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.659
+anchor_top = 0.673
+anchor_right = 0.659
+anchor_bottom = 0.673
+offset_left = -102.2
+offset_top = -41.85
+offset_right = 101.8
+offset_bottom = 42.15
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+theme = SubResource("Theme_ys36v")
+theme_override_font_sizes/font_size = 19
+shortcut = SubResource("Shortcut_qkckt")
+text = "Main Menu"
+autowrap_mode = 2
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("7_psnh3")
+scene = "MainMenu"
+
+[node name="NewRunButton" type="Button" parent="."]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.346
+anchor_top = 0.673
+anchor_right = 0.346
+anchor_bottom = 0.673
+offset_left = -101.8
+offset_top = -41.85
+offset_right = 102.2
+offset_bottom = 42.15
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+theme = SubResource("Theme_ys36v")
+theme_override_font_sizes/font_size = 19
+shortcut = SubResource("Shortcut_v8kpy")
+text = "New Run"
+autowrap_mode = 2
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("7_psnh3")
+scene = "Game"
+
+[node name="Tv" type="Sprite2D" parent="."]
+position = Vector2(402, 224)
+scale = Vector2(1, 0.996)
+texture = ExtResource("9_gee0x")
+
+[node name="Tv-extended" type="Sprite2D" parent="."]
+position = Vector2(-1454, 226)
+texture = ExtResource("10_k7pwx")
+
+[node name="Tv-extended2" type="Sprite2D" parent="."]
+position = Vector2(2232, 224)
+texture = ExtResource("10_k7pwx")
+
+[node name="Tv-extended3" type="Sprite2D" parent="."]
+position = Vector2(-1454, -740)
+texture = ExtResource("10_k7pwx")
+
+[node name="Tv-extended4" type="Sprite2D" parent="."]
+position = Vector2(2232, -740)
+texture = ExtResource("10_k7pwx")
+
+[node name="Tv-extended5" type="Sprite2D" parent="."]
+position = Vector2(402, -740)
+texture = ExtResource("10_k7pwx")
+
+[node name="Tv-extended6" type="Sprite2D" parent="."]
+position = Vector2(-1454, 1193)
+texture = ExtResource("10_k7pwx")
+
+[node name="Tv-extended7" type="Sprite2D" parent="."]
+position = Vector2(2232, 1191)
+texture = ExtResource("10_k7pwx")
+
+[node name="Tv-extended-bottom" type="Sprite2D" parent="."]
+position = Vector2(389.5, 1189)
+scale = Vector2(0.983854, 1)
+texture = ExtResource("11_bje1k")

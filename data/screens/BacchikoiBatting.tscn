@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=3 uid="uid://bfi1wrscvynhv"]
+
+[ext_resource type="Script" path="res://data/scripts/minigame_milk.gd" id="1_tg5y3"]
+[ext_resource type="Texture2D" uid="uid://b6t2hyfxsdkg7" path="res://data/minigames/bkoi/clouds.png" id="3_eugi7"]
+[ext_resource type="Texture2D" uid="uid://b22jqsl4xxs02" path="res://data/minigames/bkoi/background.png" id="3_oyj3e"]
+[ext_resource type="Texture2D" uid="uid://bgdt0ctm1hnnk" path="res://data/minigames/bkoi/auibatter.png" id="4_v40gh"]
+[ext_resource type="Texture2D" uid="uid://c8iogp4r3d3xl" path="res://data/minigames/bkoi/characters.png" id="4_vx5eg"]
+[ext_resource type="Texture2D" uid="uid://0edjd1pmhsbc" path="res://data/minigames/bkoi/gauge.png" id="5_hrqu3"]
+[ext_resource type="Texture2D" uid="uid://qusey2efow2b" path="res://data/minigames/bkoi/gauge_ball.png" id="6_v3pd1"]
+[ext_resource type="Texture2D" uid="uid://ihw61wqrr3fg" path="res://data/minigames/bkoi/ball_ui.png" id="7_v1vgs"]
+[ext_resource type="Texture2D" uid="uid://bvpwx6o77yqhf" path="res://data/minigames/bkoi/baseball.png" id="8_56yl6"]
+[ext_resource type="Texture2D" uid="uid://csyqm66buhunv" path="res://data/minigames/bkoi/label_strike_1.png" id="9_uuuyn"]
+
+[node name="MinigameMilk" type="Node2D"]
+script = ExtResource("1_tg5y3")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(961, 227)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("3_oyj3e")
+
+[node name="Clouds" type="Sprite2D" parent="."]
+position = Vector2(961, 227)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("3_eugi7")
+
+[node name="Pitcher" type="Sprite2D" parent="."]
+position = Vector2(142, 289)
+texture = ExtResource("4_vx5eg")
+hframes = 8
+frame = 6
+
+[node name="Batter" type="Sprite2D" parent="."]
+position = Vector2(1676, 294)
+texture = ExtResource("4_vx5eg")
+hframes = 8
+frame = 2
+
+[node name="MainUI" type="Sprite2D" parent="."]
+position = Vector2(400, 225)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("4_v40gh")
+
+[node name="Gauge" type="Sprite2D" parent="."]
+position = Vector2(395, 32)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("5_hrqu3")
+
+[node name="GaugeBallStatic" type="Sprite2D" parent="."]
+position = Vector2(554, 32)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("6_v3pd1")
+
+[node name="GaugeBall" type="Sprite2D" parent="."]
+position = Vector2(173, 32)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("6_v3pd1")
+
+[node name="BallsContainer" type="Node2D" parent="."]
+
+[node name="Ball1" type="Sprite2D" parent="BallsContainer"]
+position = Vector2(340, 420)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("7_v1vgs")
+
+[node name="Ball2" type="Sprite2D" parent="BallsContainer"]
+position = Vector2(395, 420)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("7_v1vgs")
+
+[node name="Ball3" type="Sprite2D" parent="BallsContainer"]
+position = Vector2(450, 420)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("7_v1vgs")
+
+[node name="Baseball" type="Sprite2D" parent="."]
+position = Vector2(106, 319)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("8_56yl6")
+
+[node name="Popup" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(397, 224)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("9_uuuyn")

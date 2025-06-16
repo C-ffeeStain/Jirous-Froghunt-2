@@ -1,0 +1,367 @@
+[gd_scene load_steps=40 format=3 uid="uid://dwdr5g11582qa"]
+
+[ext_resource type="Texture2D" uid="uid://bg0jfjnk1ydye" path="res://data/ui/bg.png" id="1_pkgtj"]
+[ext_resource type="Texture2D" uid="uid://bhbjjhngvo2yk" path="res://data/ui/selection/hovered/jirou.png" id="2_fqbau"]
+[ext_resource type="Texture2D" uid="uid://cog711rpyjnas" path="res://data/ui/selection/locked/dew.png" id="2_h8w6b"]
+[ext_resource type="Texture2D" uid="uid://rw6kbawwepsl" path="res://data/ui/selection/hovered/dew.png" id="3_h4kav"]
+[ext_resource type="Script" path="res://data/screens/CharacterSelectLocking.gd" id="3_mtaws"]
+[ext_resource type="Texture2D" uid="uid://cxvpkrg25fdho" path="res://data/ui/selection/unselected/dew.png" id="4_l0d0b"]
+[ext_resource type="Texture2D" uid="uid://da6xj0mpewykd" path="res://data/ui/selection/locked/ash.png" id="5_014gl"]
+[ext_resource type="Script" path="res://data/scripts/CharacterSelectButton.gd" id="5_w5ugv"]
+[ext_resource type="Texture2D" uid="uid://drmmgyat0mmuw" path="res://data/ui/selection/hovered/ash.png" id="6_1dqli"]
+[ext_resource type="Texture2D" uid="uid://cuvi6ywx63boh" path="res://data/ui/selection/unselected/ash.png" id="7_5ysul"]
+[ext_resource type="Texture2D" uid="uid://djteq1dkfbo0d" path="res://data/ui/selection/locked/skip.png" id="8_sckkd"]
+[ext_resource type="Texture2D" uid="uid://cpgamkbmrydu1" path="res://data/ui/selection/hovered/skip.png" id="9_kbsny"]
+[ext_resource type="Texture2D" uid="uid://bspjtid25t4bg" path="res://data/ui/selection/unselected/skip.png" id="10_ebsl8"]
+[ext_resource type="Texture2D" uid="uid://ch5p8gka5onkl" path="res://data/ui/selection/unselected/milk.png" id="11_a2das"]
+[ext_resource type="Texture2D" uid="uid://dbh04dfbcxr5b" path="res://data/ui/selection/hovered/milk.png" id="12_h32j5"]
+[ext_resource type="Texture2D" uid="uid://da28qg4ni0lnm" path="res://data/ui/selection/locked/milk.png" id="12_t3j04"]
+[ext_resource type="Texture2D" uid="uid://dv4rp5iopm8dh" path="res://data/ui/selection/unselected/jirou.png" id="14_rk65i"]
+[ext_resource type="FontFile" uid="uid://dkstlojou414g" path="res://data/rockb-aseprite14.ttf" id="14_vufrm"]
+[ext_resource type="Texture2D" uid="uid://dl11j48t0xidw" path="res://data/ui/tv.png" id="18_mprkr"]
+[ext_resource type="Texture2D" uid="uid://cew103v7ly8l" path="res://data/ui/tv-extended.png" id="19_sqwim"]
+[ext_resource type="Texture2D" uid="uid://b02crnfdxecac" path="res://data/ui/tv-extended-bottom.png" id="20_do1sc"]
+
+[sub_resource type="GDScript" id="GDScript_k8wnn"]
+script/source = "extends AudioStreamPlayer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+	
+	volume_db = linear_to_db(Globals.sfx_volume)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	volume_db = linear_to_db(Globals.sfx_volume)
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_b3n4i"]
+font = ExtResource("14_vufrm")
+font_size = 36
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8cprw"]
+font = ExtResource("14_vufrm")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d2ewl"]
+texture = ExtResource("2_h8w6b")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7rp24"]
+texture = ExtResource("3_h4kav")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6hs5t"]
+texture = ExtResource("4_l0d0b")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3o5iw"]
+texture = ExtResource("5_014gl")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_abjdy"]
+texture = ExtResource("6_1dqli")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0mllr"]
+texture = ExtResource("7_5ysul")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lr4nb"]
+texture = ExtResource("14_rk65i")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0qulm"]
+texture = ExtResource("2_fqbau")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_arigo"]
+texture = ExtResource("8_sckkd")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wjy76"]
+texture = ExtResource("9_kbsny")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kxh57"]
+texture = ExtResource("10_ebsl8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ext8w"]
+texture = ExtResource("12_t3j04")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pxxmm"]
+texture = ExtResource("12_h32j5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kcxu2"]
+texture = ExtResource("11_a2das")
+
+[sub_resource type="LabelSettings" id="LabelSettings_it55j"]
+font = ExtResource("14_vufrm")
+font_size = 17
+font_color = Color(0, 0, 0, 1)
+
+[node name="CharacterSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bgs" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bg" type="Sprite2D" parent="Bgs"]
+texture_filter = 1
+position = Vector2(20, 20)
+scale = Vector2(1, 1.51)
+texture = ExtResource("1_pkgtj")
+
+[node name="Tv" type="Sprite2D" parent="Bgs"]
+position = Vector2(21, 20)
+texture = ExtResource("18_mprkr")
+
+[node name="Tv-extended" type="Sprite2D" parent="Bgs"]
+position = Vector2(-1835, 22)
+texture = ExtResource("19_sqwim")
+
+[node name="Tv-extended2" type="Sprite2D" parent="Bgs"]
+position = Vector2(1851, 20)
+texture = ExtResource("19_sqwim")
+
+[node name="Tv-extended3" type="Sprite2D" parent="Bgs"]
+position = Vector2(-1835, -944)
+texture = ExtResource("19_sqwim")
+
+[node name="Tv-extended4" type="Sprite2D" parent="Bgs"]
+position = Vector2(1851, -944)
+texture = ExtResource("19_sqwim")
+
+[node name="Tv-extended5" type="Sprite2D" parent="Bgs"]
+position = Vector2(21, -944)
+texture = ExtResource("19_sqwim")
+
+[node name="Tv-extended6" type="Sprite2D" parent="Bgs"]
+position = Vector2(-1835, 989)
+texture = ExtResource("19_sqwim")
+
+[node name="Tv-extended7" type="Sprite2D" parent="Bgs"]
+position = Vector2(1851, 987)
+texture = ExtResource("19_sqwim")
+
+[node name="Tv-extended-bottom" type="Sprite2D" parent="Bgs"]
+position = Vector2(8.5, 985)
+scale = Vector2(0.983854, 1)
+texture = ExtResource("20_do1sc")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+script = SubResource("GDScript_k8wnn")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -185.5
+offset_top = 16.0
+offset_right = 185.5
+offset_bottom = 62.0
+grow_horizontal = 2
+text = "Choose Your Frogboy"
+label_settings = SubResource("LabelSettings_b3n4i")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Frogs" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -381.0
+offset_top = 2.0
+offset_right = -316.0
+offset_bottom = 33.0
+grow_horizontal = 2
+text = "Frogs"
+label_settings = SubResource("LabelSettings_8cprw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FrogsLine" type="Line2D" parent="."]
+position = Vector2(15, 35)
+points = PackedVector2Array(-3, 0, 76, 0)
+width = 3.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="FrogsScore" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -391.0
+offset_top = 40.0
+offset_right = -304.0
+offset_bottom = 71.0
+grow_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_8cprw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -222.485
+offset_right = -360.0
+offset_bottom = -182.485
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_mtaws")
+
+[node name="DewButton" type="Button" parent="Buttons"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 257.0
+offset_right = 238.0
+offset_bottom = 449.0
+focus_mode = 0
+theme_override_styles/disabled = SubResource("StyleBoxTexture_d2ewl")
+theme_override_styles/hover = SubResource("StyleBoxTexture_7rp24")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7rp24")
+theme_override_styles/normal = SubResource("StyleBoxTexture_6hs5t")
+disabled = true
+script = ExtResource("5_w5ugv")
+scene = "Game"
+character = "dew"
+
+[node name="AshButton" type="Button" parent="Buttons"]
+layout_mode = 0
+offset_left = 309.0
+offset_top = 277.0
+offset_right = 502.0
+offset_bottom = 449.0
+focus_mode = 0
+theme_override_styles/disabled = SubResource("StyleBoxTexture_3o5iw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_abjdy")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_abjdy")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0mllr")
+disabled = true
+script = ExtResource("5_w5ugv")
+scene = "Game"
+character = "ash"
+
+[node name="JirouButton" type="Button" parent="Buttons"]
+layout_mode = 0
+offset_left = 202.0
+offset_top = 271.0
+offset_right = 343.0
+offset_bottom = 449.0
+focus_mode = 0
+theme_override_styles/disabled = SubResource("StyleBoxTexture_lr4nb")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0qulm")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0qulm")
+theme_override_styles/normal = SubResource("StyleBoxTexture_lr4nb")
+script = ExtResource("5_w5ugv")
+scene = "Game"
+
+[node name="SkipButton" type="Button" parent="Buttons"]
+layout_mode = 0
+offset_left = 408.0
+offset_top = 285.0
+offset_right = 596.0
+offset_bottom = 449.0
+focus_mode = 0
+theme_override_styles/disabled = SubResource("StyleBoxTexture_arigo")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wjy76")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wjy76")
+theme_override_styles/normal = SubResource("StyleBoxTexture_kxh57")
+disabled = true
+script = ExtResource("5_w5ugv")
+scene = "Game"
+character = "skip"
+
+[node name="MilkButton" type="Button" parent="Buttons"]
+layout_mode = 0
+offset_left = 553.0
+offset_top = 279.0
+offset_right = 790.0
+offset_bottom = 449.0
+focus_mode = 0
+theme_override_styles/disabled = SubResource("StyleBoxTexture_ext8w")
+theme_override_styles/hover = SubResource("StyleBoxTexture_pxxmm")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_pxxmm")
+theme_override_styles/normal = SubResource("StyleBoxTexture_kcxu2")
+disabled = true
+script = ExtResource("5_w5ugv")
+scene = "Game"
+character = "milk"
+
+[node name="UnlockDew" type="Label" parent="Buttons"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 89.5
+offset_top = 226.0
+offset_right = 159.5
+offset_bottom = 257.0
+grow_horizontal = 2
+text = "69 Frogs"
+label_settings = SubResource("LabelSettings_it55j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UnlockAsh" type="Label" parent="Buttons"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 343.5
+offset_top = 247.0
+offset_right = 414.5
+offset_bottom = 278.0
+grow_horizontal = 2
+text = "40 Frogs"
+label_settings = SubResource("LabelSettings_it55j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UnlockSkip" type="Label" parent="Buttons"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 456.0
+offset_top = 256.0
+offset_right = 527.0
+offset_bottom = 287.0
+grow_horizontal = 2
+text = "5 Frogs"
+label_settings = SubResource("LabelSettings_it55j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UnlockMilk" type="Label" parent="Buttons"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 579.0
+offset_top = 258.0
+offset_right = 650.0
+offset_bottom = 289.0
+grow_horizontal = 2
+text = "20 Frogs"
+label_settings = SubResource("LabelSettings_it55j")
+horizontal_alignment = 1
+vertical_alignment = 1

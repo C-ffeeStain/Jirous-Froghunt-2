@@ -1,0 +1,108 @@
+[gd_scene load_steps=7 format=3 uid="uid://hd6868mycq5t"]
+
+[ext_resource type="Texture2D" uid="uid://cvuk4bodnmpb7" path="res://data/minigames/frogger/strip.png" id="1_fupw0"]
+[ext_resource type="Texture2D" uid="uid://n54rn1td4opj" path="res://data/minigames/frogger/player.png" id="2_0r5j4"]
+[ext_resource type="Texture2D" uid="uid://bp5i2l2we31do" path="res://data/minigames/frogger/road.png" id="3_mtkgo"]
+[ext_resource type="Script" path="res://data/screens/FroggerPlayer.gd" id="3_x2t4d"]
+[ext_resource type="Script" path="res://data/scripts/FroggerLogSpawner.gd" id="4_n4ghs"]
+[ext_resource type="Texture2D" uid="uid://b5hhcmoijbhho" path="res://data/minigames/frogger/log.png" id="6_uy57x"]
+
+[node name="Frogger" type="Node2D"]
+
+[node name="SafeStrip" type="Sprite2D" parent="."]
+modulate = Color(0.641934, 0.641934, 0.641934, 1)
+position = Vector2(25, 225)
+texture = ExtResource("1_fupw0")
+
+[node name="RoadStrip" type="Sprite2D" parent="."]
+position = Vector2(75, 225)
+texture = ExtResource("3_mtkgo")
+hframes = 3
+
+[node name="RoadStrip2" type="Sprite2D" parent="."]
+position = Vector2(125, 225)
+texture = ExtResource("3_mtkgo")
+hframes = 3
+frame = 1
+
+[node name="RoadStrip3" type="Sprite2D" parent="."]
+position = Vector2(175, 225)
+texture = ExtResource("3_mtkgo")
+hframes = 3
+frame = 1
+
+[node name="RoadStrip4" type="Sprite2D" parent="."]
+position = Vector2(225, 225)
+texture = ExtResource("3_mtkgo")
+hframes = 3
+frame = 2
+
+[node name="Rivers" type="Node2D" parent="."]
+
+[node name="River" type="Sprite2D" parent="Rivers"]
+self_modulate = Color(0.278431, 0.705882, 1, 1)
+position = Vector2(275, 225)
+texture = ExtResource("1_fupw0")
+
+[node name="River2" type="Sprite2D" parent="Rivers"]
+self_modulate = Color(0.278431, 0.705882, 1, 1)
+position = Vector2(325, 225)
+texture = ExtResource("1_fupw0")
+flip_h = true
+flip_v = true
+
+[node name="River3" type="Sprite2D" parent="Rivers"]
+self_modulate = Color(0.278431, 0.705882, 1, 1)
+position = Vector2(375, 225)
+texture = ExtResource("1_fupw0")
+
+[node name="River4" type="Sprite2D" parent="Rivers"]
+self_modulate = Color(0.278431, 0.705882, 1, 1)
+position = Vector2(425, 225)
+texture = ExtResource("1_fupw0")
+
+[node name="LogColumn1" type="Node2D" parent="."]
+position = Vector2(275, 0)
+script = ExtResource("4_n4ghs")
+column = 5
+
+[node name="LogColumn2" type="Node2D" parent="."]
+position = Vector2(325, 0)
+script = ExtResource("4_n4ghs")
+column = 6
+spawn_from_bottom = true
+
+[node name="LogColumn3" type="Node2D" parent="."]
+position = Vector2(375, 0)
+script = ExtResource("4_n4ghs")
+column = 7
+
+[node name="LogColumn4" type="Node2D" parent="."]
+position = Vector2(425, 0)
+script = ExtResource("4_n4ghs")
+column = 8
+spawn_from_bottom = true
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(25, 25)
+texture = ExtResource("2_0r5j4")
+script = ExtResource("3_x2t4d")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(0, 475)
+
+[node name="Log" type="Sprite2D" parent="Node2D"]
+texture = ExtResource("6_uy57x")
+vframes = 4
+
+[node name="Log2" type="Sprite2D" parent="Node2D"]
+position = Vector2(0, 50)
+texture = ExtResource("6_uy57x")
+vframes = 4
+frame = 1
+
+[node name="Log3" type="Sprite2D" parent="Node2D"]
+position = Vector2(0, 100)
+texture = ExtResource("6_uy57x")
+vframes = 4
+frame = 2

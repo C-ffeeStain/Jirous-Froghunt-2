@@ -1,0 +1,8 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://pgfeihyqudvk"]
+
+[ext_resource type="FontFile" uid="uid://dkstlojou414g" path="res://data/rockb-aseprite14.ttf" id="1_cqr5i"]
+
+[resource]
+base_font = ExtResource("1_cqr5i")
+variation_embolden = 0.27
+baseline_offset = 0.605

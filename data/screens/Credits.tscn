@@ -1,0 +1,220 @@
+[gd_scene load_steps=19 format=3 uid="uid://bq1wird7kbduu"]
+
+[ext_resource type="Texture2D" uid="uid://bg0jfjnk1ydye" path="res://data/ui/bg.png" id="1_lot8b"]
+[ext_resource type="FontFile" uid="uid://dkstlojou414g" path="res://data/rockb-aseprite14.ttf" id="2_vgroh"]
+[ext_resource type="FontVariation" uid="uid://pgfeihyqudvk" path="res://ButtonROCKB.tres" id="3_c4o25"]
+[ext_resource type="Texture2D" uid="uid://dsif1kytqylpt" path="res://data/ui/buttonBaseSelected.png" id="4_wvlqr"]
+[ext_resource type="Texture2D" uid="uid://bqimdsuslnshc" path="res://data/ui/buttonBaseUnselected.png" id="5_mwgdv"]
+[ext_resource type="Texture2D" uid="uid://cgetg2y7idihe" path="res://data/ui/buttonBaseActive.png" id="6_lbtig"]
+[ext_resource type="Script" path="res://data/scripts/TransitionButton.gd" id="7_rt8r6"]
+[ext_resource type="Texture2D" uid="uid://dl11j48t0xidw" path="res://data/ui/tv.png" id="8_mysqu"]
+[ext_resource type="Texture2D" uid="uid://cew103v7ly8l" path="res://data/ui/tv-extended.png" id="9_abb8a"]
+[ext_resource type="Texture2D" uid="uid://b02crnfdxecac" path="res://data/ui/tv-extended-bottom.png" id="10_0j3iy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7br4f"]
+line_spacing = 10.295
+font = ExtResource("2_vgroh")
+font_size = 28
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_avwgs"]
+line_spacing = 1.0
+font = ExtResource("2_vgroh")
+font_size = 50
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ybe7c"]
+texture = ExtResource("4_wvlqr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_45ks8"]
+texture = ExtResource("5_mwgdv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hmjwy"]
+texture = ExtResource("6_lbtig")
+
+[sub_resource type="Theme" id="Theme_ktxdb"]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 26
+Button/fonts/font = ExtResource("3_c4o25")
+Button/icons/icon = null
+Button/styles/hover = SubResource("StyleBoxTexture_ybe7c")
+Button/styles/normal = SubResource("StyleBoxTexture_45ks8")
+Button/styles/pressed = SubResource("StyleBoxTexture_hmjwy")
+
+[sub_resource type="InputEventKey" id="InputEventKey_qex42"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_rrxdj"]
+events = [SubResource("InputEventKey_qex42")]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bg" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(400, 225)
+scale = Vector2(1, 1.49003)
+texture = ExtResource("1_lot8b")
+
+[node name="ProducerLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 183.0
+offset_top = 86.0
+offset_right = 335.0
+offset_bottom = 168.0
+text = "PRODUCER
+Calyrexs"
+label_settings = SubResource("LabelSettings_7br4f")
+horizontal_alignment = 1
+
+[node name="ProducerLine" type="Line2D" parent="."]
+position = Vector2(138, 125)
+points = PackedVector2Array(0, 0, 250, 0)
+width = 3.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="ProgrammerLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 205.0
+offset_right = 367.0
+offset_bottom = 287.0
+text = "PROGRAMMER
+C_ffeeStain"
+label_settings = SubResource("LabelSettings_7br4f")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgrammerLine" type="Line2D" parent="."]
+position = Vector2(138, 246)
+points = PackedVector2Array(0, 0, 250, 0)
+width = 3.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 306.0
+offset_top = 1.0
+offset_right = 478.0
+offset_bottom = 65.0
+text = "Credits"
+label_settings = SubResource("LabelSettings_avwgs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ArtistLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 417.0
+offset_top = 86.0
+offset_right = 632.0
+offset_bottom = 168.0
+text = "ARTIST
+CosmicTraveler"
+label_settings = SubResource("LabelSettings_7br4f")
+horizontal_alignment = 1
+
+[node name="ArtistLine" type="Line2D" parent="."]
+position = Vector2(401, 125)
+points = PackedVector2Array(0, 0, 250, 0)
+width = 3.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="MusicianLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 417.0
+offset_top = 207.0
+offset_right = 632.0
+offset_bottom = 289.0
+text = "MUSICIAN
+HMNK"
+label_settings = SubResource("LabelSettings_7br4f")
+horizontal_alignment = 1
+
+[node name="MusicianLine" type="Line2D" parent="."]
+position = Vector2(401, 247)
+points = PackedVector2Array(0, 0, 250, 0)
+width = 3.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="SpecialThanksLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 249.0
+offset_top = 326.0
+offset_right = 544.0
+offset_bottom = 408.0
+text = "SPECIAL THANKS
+Original Creators"
+label_settings = SubResource("LabelSettings_7br4f")
+horizontal_alignment = 1
+
+[node name="SpecialThanksLine" type="Line2D" parent="."]
+position = Vector2(272, 365)
+points = PackedVector2Array(0, 0, 250, 0)
+width = 3.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="CreditsButton" type="Button" parent="."]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 0
+offset_left = 646.0
+offset_top = 14.0
+offset_right = 782.0
+offset_bottom = 75.0
+focus_mode = 0
+theme = SubResource("Theme_ktxdb")
+theme_override_font_sizes/font_size = 16
+shortcut = SubResource("Shortcut_rrxdj")
+text = "Return"
+autowrap_mode = 2
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("7_rt8r6")
+scene = "MainMenu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Tv" type="Sprite2D" parent="."]
+position = Vector2(402, 224)
+scale = Vector2(1, 0.996)
+texture = ExtResource("8_mysqu")
+
+[node name="Tv-extended" type="Sprite2D" parent="."]
+position = Vector2(-1454, 226)
+texture = ExtResource("9_abb8a")
+
+[node name="Tv-extended2" type="Sprite2D" parent="."]
+position = Vector2(2232, 224)
+texture = ExtResource("9_abb8a")
+
+[node name="Tv-extended3" type="Sprite2D" parent="."]
+position = Vector2(-1454, -740)
+texture = ExtResource("9_abb8a")
+
+[node name="Tv-extended4" type="Sprite2D" parent="."]
+position = Vector2(2232, -740)
+texture = ExtResource("9_abb8a")
+
+[node name="Tv-extended5" type="Sprite2D" parent="."]
+position = Vector2(402, -740)
+texture = ExtResource("9_abb8a")
+
+[node name="Tv-extended6" type="Sprite2D" parent="."]
+position = Vector2(-1454, 1193)
+texture = ExtResource("9_abb8a")
+
+[node name="Tv-extended7" type="Sprite2D" parent="."]
+position = Vector2(2232, 1191)
+texture = ExtResource("9_abb8a")
+
+[node name="Tv-extended-bottom" type="Sprite2D" parent="."]
+position = Vector2(389.5, 1189)
+scale = Vector2(0.983854, 1)
+texture = ExtResource("10_0j3iy")
