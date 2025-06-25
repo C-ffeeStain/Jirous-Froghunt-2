@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dwdr5g11582qa"]
+[gd_scene load_steps=51 format=3 uid="uid://dwdr5g11582qa"]
 
 [ext_resource type="Texture2D" uid="uid://bg0jfjnk1ydye" path="res://data/ui/bg.png" id="1_pkgtj"]
 [ext_resource type="Texture2D" uid="uid://bhbjjhngvo2yk" path="res://data/ui/selection/hovered/jirou.png" id="2_fqbau"]
@@ -21,6 +21,11 @@
 [ext_resource type="Texture2D" uid="uid://dl11j48t0xidw" path="res://data/ui/tv.png" id="18_mprkr"]
 [ext_resource type="Texture2D" uid="uid://cew103v7ly8l" path="res://data/ui/tv-extended.png" id="19_sqwim"]
 [ext_resource type="Texture2D" uid="uid://b02crnfdxecac" path="res://data/ui/tv-extended-bottom.png" id="20_do1sc"]
+[ext_resource type="FontVariation" uid="uid://pgfeihyqudvk" path="res://ButtonROCKB.tres" id="22_kkj5w"]
+[ext_resource type="Texture2D" uid="uid://dsif1kytqylpt" path="res://data/ui/buttonBaseSelected.png" id="23_l0aas"]
+[ext_resource type="Texture2D" uid="uid://bqimdsuslnshc" path="res://data/ui/buttonBaseUnselected.png" id="24_p30bv"]
+[ext_resource type="Texture2D" uid="uid://cgetg2y7idihe" path="res://data/ui/buttonBaseActive.png" id="25_rnvxp"]
+[ext_resource type="Script" path="res://data/scripts/TransitionButton.gd" id="26_k2wcl"]
 
 [sub_resource type="GDScript" id="GDScript_k8wnn"]
 script/source = "extends AudioStreamPlayer
@@ -93,6 +98,33 @@ texture = ExtResource("11_a2das")
 font = ExtResource("14_vufrm")
 font_size = 17
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kii1o"]
+texture = ExtResource("23_l0aas")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cshvf"]
+texture = ExtResource("24_p30bv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i8c0g"]
+texture = ExtResource("25_rnvxp")
+
+[sub_resource type="Theme" id="Theme_awvfs"]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 26
+Button/fonts/font = ExtResource("22_kkj5w")
+Button/icons/icon = null
+Button/styles/hover = SubResource("StyleBoxTexture_kii1o")
+Button/styles/normal = SubResource("StyleBoxTexture_cshvf")
+Button/styles/pressed = SubResource("StyleBoxTexture_i8c0g")
+
+[sub_resource type="InputEventKey" id="InputEventKey_qex42"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_iyndo"]
+events = [SubResource("InputEventKey_qex42")]
 
 [node name="CharacterSelect" type="Control"]
 layout_mode = 3
@@ -365,3 +397,22 @@ text = "20 Frogs"
 label_settings = SubResource("LabelSettings_it55j")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="."]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 0
+offset_left = 667.0
+offset_top = 12.0
+offset_right = 787.0
+offset_bottom = 66.0
+focus_mode = 0
+theme = SubResource("Theme_awvfs")
+theme_override_font_sizes/font_size = 18
+shortcut = SubResource("Shortcut_iyndo")
+text = "Back"
+autowrap_mode = 2
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("26_k2wcl")
+scene = "MainMenu"

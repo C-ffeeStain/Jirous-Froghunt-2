@@ -154,7 +154,7 @@ autowrap_mode = 2
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("7_psnh3")
-scene = "Game"
+scene = "CharacterSelect"
 
 [node name="Tv" type="Sprite2D" parent="."]
 position = Vector2(402, 224)

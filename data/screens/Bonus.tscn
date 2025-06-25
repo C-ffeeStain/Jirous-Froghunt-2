@@ -16,13 +16,13 @@
 [ext_resource type="Texture2D" uid="uid://cew103v7ly8l" path="res://data/ui/tv-extended.png" id="14_mnjug"]
 [ext_resource type="Texture2D" uid="uid://b02crnfdxecac" path="res://data/ui/tv-extended-bottom.png" id="15_r6l0a"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kii1o"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r8if1"]
 texture = ExtResource("9_3o7rn")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cshvf"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o802c"]
 texture = ExtResource("10_2hgnc")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i8c0g"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ehnup"]
 texture = ExtResource("11_rq52a")
 
 [sub_resource type="Theme" id="Theme_61alj"]
@@ -32,9 +32,9 @@ Button/colors/font_pressed_color = Color(1, 1, 1, 1)
 Button/font_sizes/font_size = 26
 Button/fonts/font = ExtResource("8_dv2is")
 Button/icons/icon = null
-Button/styles/hover = SubResource("StyleBoxTexture_kii1o")
-Button/styles/normal = SubResource("StyleBoxTexture_cshvf")
-Button/styles/pressed = SubResource("StyleBoxTexture_i8c0g")
+Button/styles/hover = SubResource("StyleBoxTexture_r8if1")
+Button/styles/normal = SubResource("StyleBoxTexture_o802c")
+Button/styles/pressed = SubResource("StyleBoxTexture_ehnup")
 
 [sub_resource type="InputEventKey" id="InputEventKey_qex42"]
 device = -1
@@ -116,50 +116,6 @@ texture = ExtResource("15_r6l0a")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
-[node name="Chibis" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -175.5
-offset_top = 38.0
-offset_right = 175.5
-offset_bottom = 106.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Ash" type="Sprite2D" parent="Chibis"]
-texture_filter = 1
-position = Vector2(246.92, 30.92)
-scale = Vector2(1.52, 1.52)
-texture = ExtResource("3_gr6np")
-
-[node name="Dew" type="Sprite2D" parent="Chibis"]
-texture_filter = 1
-position = Vector2(316.92, 30.92)
-scale = Vector2(1.52, 1.52)
-texture = ExtResource("4_mlbkh")
-
-[node name="Jirou" type="Sprite2D" parent="Chibis"]
-texture_filter = 1
-position = Vector2(36.92, 30.92)
-scale = Vector2(1.52, 1.52)
-texture = ExtResource("5_rxlq7")
-
-[node name="Milk" type="Sprite2D" parent="Chibis"]
-texture_filter = 1
-position = Vector2(176.92, 30.92)
-scale = Vector2(1.52, 1.52)
-texture = ExtResource("6_i62b7")
-
-[node name="Skip" type="Sprite2D" parent="Chibis"]
-texture_filter = 1
-position = Vector2(106.92, 30.92)
-scale = Vector2(1.52, 1.52)
-texture = ExtResource("7_i2gr2")
-
 [node name="Buttons" type="Control" parent="."]
 layout_mode = 1
 anchor_left = 0.502
@@ -240,3 +196,47 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("12_mcqhy")
 scene = "MainMenu"
+
+[node name="Chibis" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.5
+offset_top = 38.0
+offset_right = 175.5
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Ash" type="Sprite2D" parent="Chibis"]
+texture_filter = 1
+position = Vector2(246.92, 30.92)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_gr6np")
+
+[node name="Dew" type="Sprite2D" parent="Chibis"]
+texture_filter = 1
+position = Vector2(316.92, 30.92)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_mlbkh")
+
+[node name="Jirou" type="Sprite2D" parent="Chibis"]
+texture_filter = 1
+position = Vector2(36.92, 30.92)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_rxlq7")
+
+[node name="Milk" type="Sprite2D" parent="Chibis"]
+texture_filter = 1
+position = Vector2(176.92, 30.92)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_i62b7")
+
+[node name="Skip" type="Sprite2D" parent="Chibis"]
+texture_filter = 1
+position = Vector2(106.92, 30.92)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("7_i2gr2")

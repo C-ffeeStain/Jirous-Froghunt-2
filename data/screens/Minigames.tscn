@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://6f6bw4a7mkq6"]
+[gd_scene load_steps=24 format=3 uid="uid://6f6bw4a7mkq6"]
 
 [ext_resource type="Texture2D" uid="uid://dl11j48t0xidw" path="res://data/ui/tv.png" id="1_1k7w8"]
 [ext_resource type="Texture2D" uid="uid://bg0jfjnk1ydye" path="res://data/ui/bg.png" id="2_248fe"]
@@ -15,14 +15,15 @@
 [ext_resource type="Texture2D" uid="uid://bqimdsuslnshc" path="res://data/ui/buttonBaseUnselected.png" id="13_vmkob"]
 [ext_resource type="Texture2D" uid="uid://cgetg2y7idihe" path="res://data/ui/buttonBaseActive.png" id="14_vobc7"]
 [ext_resource type="Script" path="res://data/scripts/TransitionButton.gd" id="15_8uojg"]
+[ext_resource type="FontFile" uid="uid://dkstlojou414g" path="res://data/rockb-aseprite14.ttf" id="16_esexe"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kii1o"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m73rv"]
 texture = ExtResource("12_ilckg")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cshvf"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_evtjv"]
 texture = ExtResource("13_vmkob")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i8c0g"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qwsjv"]
 texture = ExtResource("14_vobc7")
 
 [sub_resource type="Theme" id="Theme_61alj"]
@@ -32,9 +33,15 @@ Button/colors/font_pressed_color = Color(1, 1, 1, 1)
 Button/font_sizes/font_size = 26
 Button/fonts/font = ExtResource("11_lrp4m")
 Button/icons/icon = null
-Button/styles/hover = SubResource("StyleBoxTexture_kii1o")
-Button/styles/normal = SubResource("StyleBoxTexture_cshvf")
-Button/styles/pressed = SubResource("StyleBoxTexture_i8c0g")
+Button/styles/hover = SubResource("StyleBoxTexture_m73rv")
+Button/styles/normal = SubResource("StyleBoxTexture_evtjv")
+Button/styles/pressed = SubResource("StyleBoxTexture_qwsjv")
+
+[sub_resource type="FontVariation" id="FontVariation_8yn4v"]
+base_font = ExtResource("16_esexe")
+variation_embolden = 0.27
+spacing_top = -22
+baseline_offset = 1.385
 
 [sub_resource type="InputEventKey" id="InputEventKey_qex42"]
 device = -1
@@ -173,65 +180,64 @@ offset_bottom = 189.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GalleryButton" type="Button" parent="Buttons"]
+[node name="BattingButton" type="Button" parent="Buttons"]
 texture_filter = 1
 texture_repeat = 1
 layout_mode = 1
-offset_left = 185.0
-offset_right = 361.0
+offset_left = 3.00003
+offset_right = 179.0
 offset_bottom = 79.0
 focus_mode = 0
 theme = SubResource("Theme_61alj")
 theme_override_font_sizes/font_size = 22
-text = "Batting Clone"
+text = "Batting"
 autowrap_mode = 2
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("15_8uojg")
 scene = "BacchikoiBatting"
 
-[node name="CreditsButton" type="Button" parent="Buttons"]
+[node name="SnakeButton" type="Button" parent="Buttons"]
 texture_filter = 1
 texture_repeat = 1
 layout_mode = 1
-offset_left = 190.0
-offset_top = 749.0
-offset_right = 366.0
-offset_bottom = 828.0
+offset_left = 375.0
+offset_top = 2.0
+offset_right = 551.0
+offset_bottom = 81.0
 focus_mode = 0
 theme = SubResource("Theme_61alj")
 theme_override_font_sizes/font_size = 22
-text = "Ignore Me"
+text = "Snake"
 autowrap_mode = 2
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("15_8uojg")
-scene = "Credits"
+scene = "Snake"
 
-[node name="MusicButton" type="Button" parent="Buttons"]
+[node name="FroggerButton" type="Button" parent="Buttons"]
 texture_filter = 1
 texture_repeat = 1
 layout_mode = 1
-offset_left = 380.0
-offset_top = 749.0
-offset_right = 556.0
-offset_bottom = 828.0
+offset_left = 189.0
+offset_right = 365.0
+offset_bottom = 79.0
 focus_mode = 0
 theme = SubResource("Theme_61alj")
-theme_override_font_sizes/font_size = 22
-text = "Ignore Me"
-autowrap_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_8yn4v")
+theme_override_font_sizes/font_size = 18
+text = "Soot's Adventure"
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("15_8uojg")
-scene = "Minigames"
+scene = "Frogger"
 
 [node name="BackButton" type="Button" parent="Buttons"]
 texture_filter = 1
 texture_repeat = 1
 layout_mode = 1
-offset_left = 394.0
-offset_right = 570.0
+offset_left = 561.0
+offset_right = 737.0
 offset_bottom = 79.0
 focus_mode = 0
 theme = SubResource("Theme_61alj")

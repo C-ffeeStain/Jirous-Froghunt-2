@@ -17,6 +17,7 @@ var PathTable: Dictionary = {
 				"Normal": preload("res://data/milk/normal.wav"),
 				"Piano": preload("res://data/milk/piano.mp3"),
 				"Sad": preload("res://data/milk/sad.mp3"),
+				"Baseball": preload("res://data/minigames/bkoi/batting_music.mp3")
 			},
 		"ash":
 			{

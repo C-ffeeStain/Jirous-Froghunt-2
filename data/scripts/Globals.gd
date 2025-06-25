@@ -14,9 +14,14 @@ var playback_position: float = 0
 
 var music_player: AudioStreamPlayer
 
+var minigame = ""
+
 var config_file: ConfigFile
 
+var high_scores: Dictionary
+
 func _ready() -> void:
+	
 	config_file = ConfigFile.new()
 	load_data()
 	save_data()
@@ -41,6 +46,15 @@ func transition(screen_name: String):
 		music_player.play()
 	if screen_name == "Music":
 		music_player.stop()
+	if screen_name == "BacchikoiBatting":
+		music_player.stream = load("res://data/minigames/bkoi/batting_music.mp3")
+		music_player.stop()
+		music_player.play()
+	if last_screen == "BacchikoiBatting":
+		music_player.stream = load("res://data/jirou/normal.wav")
+		music_player.stop()
+		music_player.play()
+	save_data()
 	get_tree().change_scene_to_file(screen_filename)
 	last_screen = screen_name
 
@@ -48,6 +62,7 @@ func save_data() -> void:
 	config_file.set_value("Settings", "music_volume", music_volume)
 	config_file.set_value("Settings", "sfx_volume", sfx_volume)
 	config_file.set_value("Game", "total_frogs", total_frogs)
+	config_file.set_value("Minigames", "high_scores", high_scores)
 	
 	config_file.save("user://savedata.cfg")
 	
@@ -58,9 +73,15 @@ func load_data() -> void:
 	if err != OK:
 		return
 		
-	total_frogs = config_file.get_value("Game", "total_frogs")
-	music_volume = config_file.get_value("Settings", "music_volume")
-	sfx_volume = config_file.get_value("Settings", "sfx_volume")
+	total_frogs = config_file.get_value("Game", "total_frogs", 0)
+	music_volume = config_file.get_value("Settings", "music_volume", 1.0)
+	sfx_volume = config_file.get_value("Settings", "sfx_volume", 1.0)
+	high_scores = config_file.get_value("Minigames", "high_scores", {
+		"Batting": 0,
+		"Frogger": 0,
+		"Snake": 0,
+		"LaserGame": 0
+	})
 
 func _process(_delta: float) -> void:
 	music_player.volume_db = linear_to_db(music_volume)

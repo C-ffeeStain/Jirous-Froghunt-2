@@ -252,7 +252,7 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("14_eq73n")
 character = "milk"
-options = Array[String](["Normal", "Sad", "Piano"])
+options = Array[String](["Normal", "Sad", "Piano", "Baseball"])
 
 [node name="SkipButton" type="Button" parent="Inputs"]
 layout_mode = 0

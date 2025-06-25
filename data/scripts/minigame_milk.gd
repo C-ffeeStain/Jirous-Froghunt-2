@@ -31,7 +31,7 @@ var bg_stopped = false
 
 var fade_mod = 0.01
 
-var balls_left = 3
+var balls_scored = 0
 var strikes = 0
 
 var result
@@ -65,9 +65,6 @@ func change_sprites(new_pos: String):
 		printerr("could not find new_pos " + new_pos)
 
 func reset() -> void:
-	if balls_left <= 0:
-		Globals.transition("Minigames")	
-	
 	$Baseball.position.x = BaseballStartPos
 	$Baseball.position.y = 319
 	$Baseball.self_modulate.a = 0
@@ -95,7 +92,9 @@ func reset() -> void:
 		$BallsContainer/Ball2.texture = ball_used
 	else:
 		$BallsContainer/Ball1.texture = ball_used
-		Globals.transition("Minigames")
+		if Globals.high_scores["Batting"] < balls_scored:
+			Globals.high_scores["Batting"] = balls_scored
+		Globals.transition("MinigameHighScores")
 	
 	fading_state = -1
 	bg_stopped = false
@@ -109,6 +108,7 @@ func reset() -> void:
 
 
 func _ready() -> void:
+	Globals.minigame = "BacchikoiBatting"
 	$Baseball.self_modulate.a = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -117,7 +117,7 @@ func _process(delta: float) -> void:
 	if $Clouds.position.x <= -BackgroundStartPos:
 		$Clouds.position.x = BackgroundStartPos
 	
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) or Input.is_key_pressed(KEY_SPACE):
 		if frame_started == -1: frame_started = Engine.get_frames_drawn()
 		if Engine.get_frames_drawn() > frame_started + 30 and not stopped:
 			stopped = true
@@ -146,7 +146,7 @@ func _process(delta: float) -> void:
 			if ball_state == 0:
 				change_sprites("strike")
 		elif ball_state == 1:
-			balls_left -= 1
+			balls_scored += 1
 			
 			$Popup.texture = PopupTextureSafe
 			change_sprites("hit")
@@ -154,7 +154,7 @@ func _process(delta: float) -> void:
 			BaseballXSpeed = -800
 			BaseballYSpeed = -800
 		elif ball_state == 2:
-			balls_left -= 1
+			balls_scored += 1
 			
 			$Popup.texture = PopupTextureHomerun
 			change_sprites("homerun")

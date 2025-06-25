@@ -1,0 +1,243 @@
+[gd_scene load_steps=20 format=3 uid="uid://6gxjgeopd18i"]
+
+[ext_resource type="Texture2D" uid="uid://dl11j48t0xidw" path="res://data/ui/tv.png" id="1_p6b4m"]
+[ext_resource type="Script" path="res://data/scripts/MinigameHighScores.gd" id="1_t0gsf"]
+[ext_resource type="Texture2D" uid="uid://cew103v7ly8l" path="res://data/ui/tv-extended.png" id="2_qsqyd"]
+[ext_resource type="Texture2D" uid="uid://b02crnfdxecac" path="res://data/ui/tv-extended-bottom.png" id="3_s1bvu"]
+[ext_resource type="Texture2D" uid="uid://bg0jfjnk1ydye" path="res://data/ui/bg.png" id="4_jjomw"]
+[ext_resource type="FontFile" uid="uid://dkstlojou414g" path="res://data/rockb-aseprite14.ttf" id="5_me06d"]
+[ext_resource type="FontVariation" uid="uid://pgfeihyqudvk" path="res://ButtonROCKB.tres" id="6_85384"]
+[ext_resource type="Texture2D" uid="uid://dsif1kytqylpt" path="res://data/ui/buttonBaseSelected.png" id="7_ul1lk"]
+[ext_resource type="Texture2D" uid="uid://bqimdsuslnshc" path="res://data/ui/buttonBaseUnselected.png" id="8_hkulk"]
+[ext_resource type="Texture2D" uid="uid://cgetg2y7idihe" path="res://data/ui/buttonBaseActive.png" id="9_w7khq"]
+[ext_resource type="Script" path="res://data/scripts/TransitionButton.gd" id="10_cxetg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4muik"]
+font = ExtResource("5_me06d")
+font_size = 60
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2im7w"]
+font = ExtResource("5_me06d")
+font_size = 45
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kii1o"]
+texture = ExtResource("7_ul1lk")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cshvf"]
+texture = ExtResource("8_hkulk")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i8c0g"]
+texture = ExtResource("9_w7khq")
+
+[sub_resource type="Theme" id="Theme_6ieuh"]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 26
+Button/fonts/font = ExtResource("6_85384")
+Button/icons/icon = null
+Button/styles/hover = SubResource("StyleBoxTexture_kii1o")
+Button/styles/normal = SubResource("StyleBoxTexture_cshvf")
+Button/styles/pressed = SubResource("StyleBoxTexture_i8c0g")
+
+[sub_resource type="InputEventKey" id="InputEventKey_qex42"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_520rw"]
+events = [SubResource("InputEventKey_qex42")]
+
+[node name="MinigameHighScores" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t0gsf")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 400.0
+offset_top = 225.0
+offset_right = 440.0
+offset_bottom = 265.0
+
+[node name="Tv" type="Sprite2D" parent="Control"]
+position = Vector2(0, 0.599976)
+texture = ExtResource("1_p6b4m")
+
+[node name="Tv-extended" type="Sprite2D" parent="Control"]
+position = Vector2(-1856, 3)
+texture = ExtResource("2_qsqyd")
+
+[node name="Tv-extended2" type="Sprite2D" parent="Control"]
+position = Vector2(1830, 1)
+texture = ExtResource("2_qsqyd")
+
+[node name="Tv-extended3" type="Sprite2D" parent="Control"]
+position = Vector2(-1856, -963)
+texture = ExtResource("2_qsqyd")
+
+[node name="Tv-extended4" type="Sprite2D" parent="Control"]
+position = Vector2(1830, -963)
+texture = ExtResource("2_qsqyd")
+
+[node name="Tv-extended5" type="Sprite2D" parent="Control"]
+position = Vector2(0, -963)
+texture = ExtResource("2_qsqyd")
+
+[node name="Tv-extended6" type="Sprite2D" parent="Control"]
+position = Vector2(-1856, 970)
+texture = ExtResource("2_qsqyd")
+
+[node name="Tv-extended7" type="Sprite2D" parent="Control"]
+position = Vector2(1830, 968)
+texture = ExtResource("2_qsqyd")
+
+[node name="Tv-extended-bottom" type="Sprite2D" parent="Control"]
+position = Vector2(-12.5, 966)
+scale = Vector2(0.983854, 1)
+texture = ExtResource("3_s1bvu")
+
+[node name="Bg" type="Sprite2D" parent="Control"]
+texture_filter = 1
+position = Vector2(0, 1)
+scale = Vector2(1.00055, 1.50083)
+texture = ExtResource("4_jjomw")
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 800.0
+offset_bottom = 72.0
+text = "High Scores"
+label_settings = SubResource("LabelSettings_4muik")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BattingLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 90.0
+offset_right = 314.0
+offset_bottom = 166.0
+text = "Batting"
+label_settings = SubResource("LabelSettings_2im7w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BattingLine" type="Line2D" parent="."]
+position = Vector2(85, 160)
+points = PackedVector2Array(0, 0, 250, 0)
+width = 5.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="BattingScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 164.0
+offset_right = 314.0
+offset_bottom = 240.0
+text = "0"
+label_settings = SubResource("LabelSettings_2im7w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FroggerLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 217.0
+offset_top = 235.0
+offset_right = 578.0
+offset_bottom = 311.0
+text = "Soot's Adventure"
+label_settings = SubResource("LabelSettings_2im7w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FroggerLine" type="Line2D" parent="."]
+position = Vector2(295.814, 306.043)
+scale = Vector2(1.20857, 1.20857)
+points = PackedVector2Array(-90, 0, 250, 0)
+width = 5.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="FroggerScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 221.0
+offset_top = 312.0
+offset_right = 581.0
+offset_bottom = 388.0
+text = "0"
+label_settings = SubResource("LabelSettings_2im7w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SnakeLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 490.0
+offset_top = 90.0
+offset_right = 696.0
+offset_bottom = 166.0
+text = "Snake"
+label_settings = SubResource("LabelSettings_2im7w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SnakeLine" type="Line2D" parent="."]
+position = Vector2(467, 160)
+points = PackedVector2Array(0, 0, 250, 0)
+width = 5.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="SnakeScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 490.0
+offset_top = 164.0
+offset_right = 696.0
+offset_bottom = 240.0
+text = "0"
+label_settings = SubResource("LabelSettings_2im7w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="."]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 0
+offset_left = 611.0
+offset_top = 365.0
+offset_right = 787.0
+offset_bottom = 444.0
+focus_mode = 0
+theme = SubResource("Theme_6ieuh")
+theme_override_font_sizes/font_size = 22
+shortcut = SubResource("Shortcut_520rw")
+text = "Back"
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("10_cxetg")
+scene = "Bonus"
+
+[node name="BonusButton" type="Button" parent="."]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 0
+offset_left = 12.0
+offset_top = 365.0
+offset_right = 188.0
+offset_bottom = 444.0
+focus_mode = 0
+theme = SubResource("Theme_6ieuh")
+theme_override_font_sizes/font_size = 22
+shortcut = SubResource("Shortcut_520rw")
+text = "Main Menu"
+autowrap_mode = 2
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("10_cxetg")
+scene = "MainMenu"

@@ -1,0 +1,109 @@
+[gd_scene load_steps=13 format=3 uid="uid://c68vrmdbrn2l4"]
+
+[ext_resource type="Texture2D" uid="uid://cjovn5puy4n42" path="res://data/minigames/snake/Snake_spritesheet.png" id="1_bkscw"]
+[ext_resource type="Texture2D" uid="uid://da4w1vfdsfkd" path="res://data/minigames/snake/apple.png" id="2_4hj6c"]
+[ext_resource type="Texture2D" uid="uid://ba6bx8sj2xguy" path="res://data/minigames/snake/grass.png" id="2_pwbew"]
+[ext_resource type="Script" path="res://data/scripts/SnakeTest.gd" id="3_fe2ju"]
+[ext_resource type="FontFile" uid="uid://dkstlojou414g" path="res://data/rockb-aseprite14.ttf" id="4_67xvj"]
+[ext_resource type="Texture2D" uid="uid://cjepwaqujiaiv" path="res://data/minigames/snake/screen.png" id="6_pvv4k"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3isn0"]
+texture = ExtResource("1_bkscw")
+texture_region_size = Vector2i(25, 25)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_th3e2"]
+texture = ExtResource("2_4hj6c")
+texture_region_size = Vector2i(25, 25)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_3esjs"]
+tile_size = Vector2i(25, 25)
+sources/0 = SubResource("TileSetAtlasSource_3isn0")
+sources/1 = SubResource("TileSetAtlasSource_th3e2")
+
+[sub_resource type="LabelSettings" id="LabelSettings_a05sk"]
+line_spacing = 1.0
+font = ExtResource("4_67xvj")
+font_size = 25
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_g5y7u"]
+line_spacing = 1.0
+font = ExtResource("4_67xvj")
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_hqyq5"]
+line_spacing = 1.0
+font = ExtResource("4_67xvj")
+font_size = 30
+
+[node name="Snake" type="Node2D"]
+script = ExtResource("3_fe2ju")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 800.0
+offset_bottom = 450.0
+texture = ExtResource("2_pwbew")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="SnakeAppleLayer" type="TileMapLayer" parent="."]
+texture_filter = 1
+use_parent_material = true
+tile_set = SubResource("TileSet_3esjs")
+
+[node name="SnakeTick" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_right = 49.0
+offset_bottom = 51.0
+text = "0"
+label_settings = SubResource("LabelSettings_a05sk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Screen" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Screen" type="Sprite2D" parent="CanvasLayer/Screen"]
+position = Vector2(400, 225)
+texture = ExtResource("6_pvv4k")
+
+[node name="ScreenLabel" type="Label" parent="CanvasLayer/Screen"]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 188.0
+offset_right = 564.0
+offset_bottom = 252.0
+text = "Click to begin"
+label_settings = SubResource("LabelSettings_g5y7u")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScreenLabel2" type="Label" parent="CanvasLayer/Screen"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 407.0
+offset_right = 799.0
+offset_bottom = 448.0
+text = "Press Escape/Q to quit"
+label_settings = SubResource("LabelSettings_hqyq5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="SnakeTick" to="." method="_on_snake_tick_timeout"]
